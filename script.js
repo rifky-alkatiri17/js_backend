@@ -31,13 +31,44 @@ let dataASN = async function(){
 	return data
 }
 
-dataASN().then(res=> console.log(res));
-tabel.innerHTML = `
-	<table>
-		<tr>
-			<th>No</th> <th>Nama</th>
-		</tr>
-		<tr>
-			<td>1</td> <td>Rifki Alkatiri</td>
-		</tr>
-	</table>`;
+// rangkai
+let isiTabel, tableHeader;
+
+setInterval(function(){
+	isiTabel = '';
+	dataASN().then(res=>{
+		// looping
+		res.map(e=>{
+			// console.log(e);
+			isiTabel +=`
+			<tr>
+				<td>${e.id}</td>
+				<td>${e.nama}</td>
+				<td>${e.nip}</td>
+				<td>${e.pangkat_gol}</td>
+				<td>${e.jabatan}</td>
+			</tr>`});
+
+		// susun
+		tableHeader=`
+			<table class="table table-dark table-striped table-hover table-bordered">
+				<tr>
+					<th>No</th> <th>Nama</th> <th>NIP</th> <th>Pangkat/Gol</th> <th>Jabatan</th>
+				</tr>
+				<tr>
+					${isiTabel}
+				</tr>
+			</table>
+		`;
+
+		// tampil
+		tabel.innerHTML = tableHeader;
+	});
+}, 1000); 
+
+
+
+	
+
+
+

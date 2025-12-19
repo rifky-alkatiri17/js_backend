@@ -1,6 +1,6 @@
 <?php  
-$conn = mysqli_connect('localhost','root', '', 'db_sensor');
-$select = mysqli_query($conn, 'SELECT * FROM tb_hcsr04');
+$conn = mysqli_connect('localhost','root', '', 'db_pns');
+$select = mysqli_query($conn, 'SELECT * FROM tb_pdi');
 $rows = [];
 while($row = mysqli_fetch_assoc($select)){
 	$rows[] = $row;	
